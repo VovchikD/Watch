@@ -1,0 +1,69 @@
+<div class="bnr" id="home">
+  <div id="top" class="callbacks_container">
+<!--bunner ends-->
+<% if @brands.nil? %>
+<h2>no brands</h2>
+<% else %>
+<div class="about">
+  <div class="container">
+    <div class="about-top grid-1">
+    <% @brands.each do |i| %>
+    <div class="col-md-4 about-left">
+    <figure class="effect-bubba">
+    <%= image_tag(i.img, alt: "", class: "img-responsive") %>
+    <figcaption>
+    <h2> <%= i.title %></h2>
+    <p><%= i.description%></p>
+    </figcaption>
+    </figure>
+    </div>
+    <% end %>
+    <% end %>
+    <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+<!-- about end-->
+<% if @hits.nil? %>
+  <h2>no hits</h2>
+  <% else %>
+<!-- product starts-->
+<div class="products">
+  <div class="cantainer">
+    <div class="product-top">
+      <div class="product-one">
+      <% @hits.hit.each do |hit|%>
+      <div class="col-md-3 product-left">
+      <div class="product-main simpleCart_shelfItem">
+      <a href="product/<%= hit.id %>" class="mask">
+      <%= image_tag(hit.img, alt: "", class:"img-responsive zoom-img") %>
+      </a>
+      <%= %>
+      <div class= "product=bottom">
+      <h3><a href="product/<%= hit.id %>"><%= hit.title %></a></h3> 
+      <p>Explore Now</p>
+      <h4>
+      <%= link_to 'cart_items', class: "add-to-cart-link", data: {id: hit.id} do %>
+      <i>  </i>
+      <% end %>
+      <span class="item_price">$ <%= hit.price%> </span>
+      <% if hit.old_price %>
+      <small><del>$ <%= hit.old_price %></del></small>
+      <% end %>
+      </h4>
+      </div>
+      <div clss="srch">
+      <span>
+      - 50 %
+      </span>
+      </div>
+      </div>
+      </div>
+      <% end %>
+      <div class="clearfix"></div>
+      </div>
+      </div>
+      </div>
+      </div>
+      <% end %>
+    
